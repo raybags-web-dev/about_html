@@ -66,10 +66,20 @@ nav {
   margin-left: auto;
   transform: rotateY(180deg);
   transition: var(--transition);
+  -webkit-animation: run-arrow 2 linear 1s;
   animation: run-arrow 2 linear 1s;
 }
 
 /* open side menu arrow animation  */
+@-webkit-keyframes run-arrow {
+  0% {
+    right: 100%;
+  }
+  100% {
+    right: -100%;
+    color: var(--white-clr);
+  }
+}
 @keyframes run-arrow {
   0% {
     right: 100%;
@@ -107,6 +117,7 @@ nav h2 {
   transition: var(--transition);
   color: var(--red-clr);
   transform: var(--fore-ground);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 0.4rem;
   padding: 0.3rem;
@@ -181,6 +192,7 @@ header:hover .nav-open {
   cursor: pointer;
 }
 header:hover .nav-open {
+  -webkit-animation-play-state: paused;
   animation-play-state: paused;
 }
 
@@ -191,7 +203,8 @@ section {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: radial-gradient(var(--white-bg), var(--smoky-white-bg) 70%);
+  background: radial-gradient(var(--white-bg), var(--smoky-white-bg) 100%);
+  /* background: radial-gradient(#ffff, rgb(143, 140, 140) 70%); */
 }
 
 .content {
@@ -200,6 +213,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 80%;
+  max-width: 70%;
   height: 100%;
   margin-left: 5rem;
   transition: var(--transition);
@@ -227,9 +241,10 @@ section {
   margin-top: auto;
   border-radius: 0.5rem;
   transition: var(--transition);
-  box-shadow: 0 -5px 14px rgba(107, 51, 51, 0.5);
   font-family: var(--sub-content-font);
-  background: radial-gradient(#ffff, rgb(143, 140, 140) 70%);
+  -webkit-backdrop-filter: var(--blur-bg);
+  backdrop-filter: var(--blur-bg);
+  box-shadow: 0 10px 14px #1f2020;
 }
 .card-heading {
   width: 90%;
@@ -243,7 +258,9 @@ section {
   top: 1%;
   right: 8%;
   border-radius: 50%;
+  -o-object-fit: cover;
   object-fit: cover;
+  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   transition: var(--transition);
   border: 0.1rem solid transparent;
@@ -265,10 +282,11 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  width: 2%;
+  width: 1%;
   height: 100%;
   background: var(--grayy-color);
   transition: var(--transition);
+  -webkit-backdrop-filter: var(--blur-bg);
   backdrop-filter: var(--blur-bg);
   transform: var(--fore-ground);
   z-index: inherit;
@@ -281,10 +299,10 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   width: 0.25rem;
   height: 0.5rem;
-  background: var(--thumbnail-color);
+  background: var(--grayy-color);
 }
 body::-webkit-scrollbar-track {
-  background: var(--white-bg);
+  background: var(--dark-gray-bg);
 }
 
 @media screen and (max-width: 796px) {
@@ -328,6 +346,7 @@ body::-webkit-scrollbar-track {
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 100%;
     margin-left: 5%;
     margin-right: 5%;
     transition: margin-left 0.5s;
