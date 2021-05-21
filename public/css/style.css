@@ -153,6 +153,14 @@ li p {
 li i {
   transition: var(--transition);
 }
+li a {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 100%;
+  transition: var(--transition);
+}
+
 a {
   text-decoration: none;
   color: var(--grayy-color);
