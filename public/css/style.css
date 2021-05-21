@@ -39,6 +39,7 @@ header {
   transition: var(--transition);
   z-index: 100;
 }
+
 .toggleHeaderClass {
   width: 10%;
 }
@@ -122,19 +123,10 @@ nav h2 {
   border-radius: 0.4rem;
   padding: 0.3rem;
   background: radial-gradient(#ffff, rgb(143, 140, 140) 70%);
-  /* animation: rotateCogg infinite linear 6s; */
 }
-/* @keyframes rotateCogg {
-  to {
-    color: var(--white-clr);
-  }
-}
-.logo:hover {
-  color: var(--white-clr);
-} */
 
-/* nav animation */
 .nav li {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -167,6 +159,14 @@ a {
   font-style: italic;
   transition: var(--transition);
 }
+li a i {
+  color: var(--smoky-white-bg);
+  opacity: 0.5;
+}
+li a p {
+  color: var(--smoky-white-bg);
+  opacity: 0.5;
+}
 /* hover effects */
 li i:hover {
   transform: scale(1.1);
@@ -174,7 +174,7 @@ li i:hover {
   color: var(--red-clr);
 }
 li p:hover {
-  color: var(--white-clr);
+  color: var(--red-clr);
   transition: var(--transition);
 }
 header:hover {
@@ -212,7 +212,6 @@ section {
   align-items: center;
   min-height: 100vh;
   background: radial-gradient(var(--white-bg), var(--smoky-white-bg) 100%);
-  /* background: radial-gradient(#ffff, rgb(143, 140, 140) 70%); */
 }
 
 .content {
@@ -290,7 +289,7 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1%;
+  width: 2%;
   height: 100%;
   background: var(--grayy-color);
   transition: var(--transition);
@@ -311,6 +310,17 @@ body::-webkit-scrollbar-thumb {
 }
 body::-webkit-scrollbar-track {
   background: var(--dark-gray-bg);
+}
+.active {
+  color: var(--white-clr);
+  background: radial-gradient(#3b3838, rgb(78, 75, 75) 70%);
+  border-radius: 3rem;
+  backdrop-filter: var(--blur-bg);
+  animation: bg-manage 3 linear 0.5s;
+}
+@keyframes bg-manage {
+  to {
+  }
 }
 
 @media screen and (max-width: 796px) {
