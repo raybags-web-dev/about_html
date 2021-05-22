@@ -163,6 +163,7 @@ a {
 li a i {
   color: var(--smoky-white-bg);
   opacity: 0.5;
+  padding: 0.2rem 0;
 }
 li a p {
   color: var(--smoky-white-bg);
@@ -321,16 +322,6 @@ body::-webkit-scrollbar-track {
   border-radius: 3rem;
   -webkit-backdrop-filter: var(--blur-bg);
   backdrop-filter: var(--blur-bg);
-  -webkit-animation: bg-manage 3 linear 0.5s;
-  animation: bg-manage 3 linear 0.5s;
-}
-@-webkit-keyframes bg-manage {
-  to {
-  }
-}
-@keyframes bg-manage {
-  to {
-  }
 }
 
 @media screen and (max-width: 796px) {
