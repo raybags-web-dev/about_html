@@ -1,4 +1,6 @@
 "use strict";
+const menu_link = document.querySelector(".close-nav-link");
+const side_nav = document.getElementById("header");
 
 $(document).ready(function () {
   console.log("jquery loaded");
@@ -15,6 +17,18 @@ $(document).ready(function () {
         $(this).parent().siblings().removeClass("active");
       }
     });
+  });
+
+  // close side menu arrow button handler
+  $(menu_link).on("click", function () {
+    $(side_nav).css({ width: "10%" });
+
+    console.log("link clicked");
+  });
+  // open side menu arrow button handler
+
+  $(side_nav).on("hover", function () {
+    $(side_nav).css({ width: "25%" });
   });
 
   // functions running on window resize

@@ -216,6 +216,9 @@ section {
   scroll-behavior: smooth !important;
   background: radial-gradient(var(--white-bg), var(--smoky-white-bg) 100%);
 }
+aside {
+  min-height: 100vh;
+}
 
 .content {
   display: flex;
@@ -323,7 +326,15 @@ body::-webkit-scrollbar-track {
   -webkit-backdrop-filter: var(--blur-bg);
   backdrop-filter: var(--blur-bg);
 }
-
+@media screen and (max-width: 500px) {
+  li a i {
+    color: var(--white-bg);
+    opacity: 0.5;
+    padding: 0.2rem 0;
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+}
 @media screen and (max-width: 796px) {
   header {
     display: flex;
