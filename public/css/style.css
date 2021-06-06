@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
 :root {
   --page-margin: 2rem;
   --grayy-color: #4d4a4a;
@@ -8,13 +10,16 @@
   --icon-color: rgb(76, 79, 83);
   --content-sahde-gray: rgb(223, 223, 223);
   --gray-bg: #2d2e30;
+  --gray-bg-2: rgb(34, 33, 33);
   --dark-gray-bg: #1f2020;
   --transition: all 0.5s;
   --thumbnail-color: #462e28;
   --blur-bg: blur(100px);
   --fore-ground: translateZ(3rem);
+  --typewriter-speed: .6s;
   --heading-font: "Times New Roman", Times, serif;
   --sub-content-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --source-code: font-family: 'Source Code Pro', monospace;
 }
 *,
 *::before,
@@ -252,6 +257,7 @@ section {
   height: 100%;
   margin-left: 5rem;
   margin: auto;
+  overflow: hidden;
   transition: var(--transition);
 }
 .content-container {
@@ -293,6 +299,7 @@ aside {
   border-radius: 0.2rem;
   -webkit-backdrop-filter: var(--blur-bg);
   backdrop-filter: var(--blur-bg);
+  background: var(--gray-bg-2);
 }
 /* content section */
 .content_1 {
@@ -308,8 +315,6 @@ aside {
   transform-style: preserve-3d;
   box-shadow: 0 0px 1px #1f2020;
   transition: var(--transition);
-  background: radial-gradient(rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%),
-    url("../images/faniture3.jpeg") center/cover no-repeat fixed;
 }
 .content_1::before {
   content: "";
@@ -339,16 +344,12 @@ aside {
 }
 @media screen and (max-width: 1120px) {
   .content {
-    /* margin-right: 1.5%;
-    transition: var(--transition); */
     width: 55rem;
     margin-right: 5%;
   }
 }
 @media screen and (max-width: 1047px) {
   .content {
-    /* margin-right: 1.5%;
-    transition: var(--transition); */
     width: 50rem;
     margin-right: 5%;
   }
@@ -373,22 +374,54 @@ aside {
   }
 }
 
-.card-heading h2 {
+.p-heading {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   flex-wrap: wrap;
   margin: auto;
-  width: 100%;
-  height: 15vh;
   font-size: 1.5em;
-  padding: 0.5em;
   color: var(--red-clr);
-  font-style: oblique;
-  text-transform: capitalize;
-  font-family: var(--heading-font);
+  font-weight: 700;
+  opacity: .8;
+  letter-spacing: .4rem;
+  text-transform: uppercase;
+  font-family: var(--source-code); 
   transition: var(--transition);
+  width: max-content;
+}
+.blink-text::before, .blink-text::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+.blink-text::before{
+background: var(--gray-bg-2);
+  animation: typewriter  var(--typewriter-speed) steps(8) .5s forwards ;
+}
+
+.blink-text::after{
+  background: var(--red-clr);
+  width: 0.125em;
+  animation: typewriter var(--typewriter-speed) steps(8) .5s forwards, blink_cursor 750ms steps(8) infinite;
+}
+
+@keyframes typewriter {
+  to{
+    left: 100%;
+  }
+}
+@keyframes blink_cursor {
+  to{
+    background: transparent;
+    opacity: .8;
+  }
 }
 .content-container {
   position: relative;
@@ -404,9 +437,21 @@ p {
 .test {
   position: relative;
   left: 0%;
-  opacity: 0.8;
-  transform: translateZ(10rem);
-  transform-style: preserve-3d;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.placetext {
+  transition: var(--transition);
+  letter-spacing: 0.2rem;
+  animation: fadeIntext 1 forwards linear 1s;
+}
+
+@keyframes fadeIntext {
+  to {
+    opacity: 0.8;
+    letter-spacing: auto;
+  }
 }
 
 p::first-letter {
