@@ -19,7 +19,7 @@
   --typewriter-speed: .6s;
   --heading-font: "Times New Roman", Times, serif;
   --sub-content-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  --source-code: font-family: 'Source Code Pro', monospace;
+  --source-code: font-family: 'Source Code Pro', ;
 }
 *,
 *::before,
@@ -389,6 +389,8 @@ aside {
   text-transform: uppercase;
   font-family: var(--source-code); 
   transition: var(--transition);
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
 }
 .blink-text::before, .blink-text::after{
@@ -403,18 +405,32 @@ aside {
 }
 .blink-text::before{
 background: var(--gray-bg-2);
-  animation: typewriter  var(--typewriter-speed) steps(8) .5s forwards ;
+  -webkit-animation: typewriter  var(--typewriter-speed) steps(8) .5s forwards ;
+          animation: typewriter  var(--typewriter-speed) steps(8) .5s forwards ;
 }
 
 .blink-text::after{
   background: var(--red-clr);
   width: 0.125em;
-  animation: typewriter var(--typewriter-speed) steps(8) .5s forwards, blink_cursor 750ms steps(8) infinite;
+  -webkit-animation: typewriter var(--typewriter-speed) steps(8) .5s forwards, blink_cursor 750ms steps(8) infinite;
+          animation: typewriter var(--typewriter-speed) steps(8) .5s forwards, blink_cursor 750ms steps(8) infinite;
+}
+
+@-webkit-keyframes typewriter {
+  to{
+    left: 100%;
+  }
 }
 
 @keyframes typewriter {
   to{
     left: 100%;
+  }
+}
+@-webkit-keyframes blink_cursor {
+  to{
+    background: transparent;
+    opacity: .8;
   }
 }
 @keyframes blink_cursor {
@@ -444,7 +460,15 @@ p {
 .placetext {
   transition: var(--transition);
   letter-spacing: 0.2rem;
-  animation: fadeIntext 1 forwards linear 1s;
+  -webkit-animation: fadeIntext 1 forwards linear 1s;
+          animation: fadeIntext 1 forwards linear 1s;
+}
+
+@-webkit-keyframes fadeIntext {
+  to {
+    opacity: 0.8;
+    letter-spacing: auto;
+  }
 }
 
 @keyframes fadeIntext {
