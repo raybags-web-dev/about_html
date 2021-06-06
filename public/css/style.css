@@ -10,8 +10,8 @@
   --gray-bg: #2d2e30;
   --dark-gray-bg: #1f2020;
   --transition: all 0.5s;
-  --blur-bg: blur(100px);
   --thumbnail-color: #462e28;
+  --blur-bg: blur(100px);
   --fore-ground: translateZ(3rem);
   --heading-font: "Times New Roman", Times, serif;
   --sub-content-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -26,6 +26,12 @@
 body {
   overflow-x: hidden;
   scroll-behavior: smooth !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: radial-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5) 75%),
+    url("../images/faniture3.jpeg") center/cover no-repeat fixed;
 }
 
 /* header styles */
@@ -103,6 +109,7 @@ nav h2 {
   transition: var(--transition);
 }
 .nav {
+  position: relative;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -111,8 +118,21 @@ nav h2 {
   color: var(--icon-color);
   font-size: 3em;
   padding-top: 0.5rem;
-  background-color: var(--dark-gray-bg);
   height: 90vh;
+  -webkit-backdrop-filter: var(--blur-bg);
+  backdrop-filter: var(--blur-bg);
+}
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: -100;
+  opacity: 0.3;
+  transition: var(--transition);
 }
 
 /* logo styles and animations. decided to not run animation */
@@ -133,7 +153,7 @@ nav h2 {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  padding: 0.4rem;
+  padding: 0.2rem;
   cursor: pointer;
 }
 
@@ -162,13 +182,15 @@ a {
   transition: var(--transition);
 }
 li a i {
-  color: var(--smoky-white-bg);
+  color: var(--red-clr);
   opacity: 0.5;
   padding: 0.1rem 0;
+  font-size: 2rem;
 }
 li a p {
   color: var(--smoky-white-bg);
   opacity: 0.5;
+  transition: var(--transition);
 }
 /* hover effects */
 li i:hover {
@@ -179,6 +201,10 @@ li i:hover {
 li p:hover {
   color: var(--red-clr);
   transition: var(--transition);
+}
+li a p {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 header:hover {
   width: 20%;
@@ -215,7 +241,6 @@ section {
   align-items: center;
   min-height: 100vh;
   scroll-behavior: smooth !important;
-  background: radial-gradient(var(--white-bg), var(--smoky-white-bg) 100%);
 }
 .content {
   display: flex;
@@ -266,6 +291,7 @@ aside {
   min-height: 90vh;
   max-width: 100%;
   border-radius: 0.2rem;
+  -webkit-backdrop-filter: var(--blur-bg);
   backdrop-filter: var(--blur-bg);
 }
 /* content section */
@@ -275,11 +301,15 @@ aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--content-sahde-gray);
   border-radius: 0.3rem;
   width: 100%;
   padding: 1rem;
+  overflow: hidden;
+  transform-style: preserve-3d;
   box-shadow: 0 0px 1px #1f2020;
+  transition: var(--transition);
+  background: radial-gradient(rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%),
+    url("../images/faniture3.jpeg") center/cover no-repeat fixed;
 }
 .content_1::before {
   content: "";
@@ -364,10 +394,26 @@ aside {
   position: relative;
   width: 100%;
 }
+p {
+  color: var(--white-clr);
+  letter-spacing: 0.1rem;
+  transition: var(--transition);
+  transform: translateZ(3rem);
+}
+
+.test {
+  position: relative;
+  left: 0%;
+  opacity: 0.8;
+  transform: translateZ(10rem);
+  transform-style: preserve-3d;
+}
+
 p::first-letter {
   font-size: 2rem;
   letter-spacing: 0.4rem;
   font-style: italic;
+  color: rgb(241, 225, 225);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
@@ -385,14 +431,18 @@ body::-webkit-scrollbar-track {
 }
 .active {
   color: var(--white-clr);
-  background: radial-gradient(#3b3838, rgb(78, 75, 75) 70%);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 7, 7, 0.5));
   border-radius: 3rem;
   -webkit-backdrop-filter: var(--blur-bg);
   backdrop-filter: var(--blur-bg);
+  opacity: 0.5;
+  -webkit-backdrop-filter: bur(100px);
+  backdrop-filter: bur(100px);
 }
+
 @media screen and (max-width: 500px) {
   li a i {
-    color: var(--white-bg);
+    color: var(--red-clr);
     opacity: 0.5;
     padding: 0.2rem 0;
     font-size: 2rem;
@@ -421,7 +471,7 @@ body::-webkit-scrollbar-track {
     color: var(--icon-color);
     font-size: 3em;
     padding-top: 0.5rem;
-    background-color: var(--dark-gray-bg);
+    background: var(--dark-gray-bg);
     height: 10vh;
     transition: var(--transition);
     min-width: 100vw;
@@ -445,6 +495,8 @@ body::-webkit-scrollbar-track {
     margin-right: 5%;
     transition: margin-left 0.5s;
     transition: margin-right 0.5s;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../images/faniture3.jpeg") center/cover no-repeat fixed;
   }
   header:hover {
     width: auto;

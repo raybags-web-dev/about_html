@@ -22,8 +22,6 @@ $(document).ready(function () {
   // close side menu arrow button handler
   $(menu_link).on("click", function () {
     $(side_nav).css({ width: "10%" });
-
-    console.log("link clicked");
   });
   // open side menu arrow button handler
 
@@ -31,9 +29,4 @@ $(document).ready(function () {
     $(side_nav).css({ width: "25%" });
   });
 
-  // functions running on window resize
-  // $(window).on("resize", () => {});
-  // $(window).on("orientationChange", () => {});
-  // $(window).on("load", () => {});
-  // $(window).on("mousemove", () => {});
 });
